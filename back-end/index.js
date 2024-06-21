@@ -4,10 +4,10 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieparser = require("cookie-parser");
-const signinRouter = require("./router/authRoutes");
-const signupRouter = require("./router/authRoutes");
+const AllauthRouter = require("./router/authRoutes");
 
 const mongooseUrl = process.env.MONGO_URL;
+
 mongoose
   .connect(mongooseUrl)
   .then(() => {
@@ -21,8 +21,8 @@ app.use(cookieparser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/api/v1", signinRouter);
-app.use("/api/v1", signupRouter);
+app.use("/api/v1", AllauthRouter);
+
 const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
