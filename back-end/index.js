@@ -7,20 +7,15 @@ const cookieparser = require("cookie-parser");
 const signinRouter = require("./router/authRoutes");
 const signupRouter = require("./router/authRoutes");
 
-// mongoose
-//   .connect(process.env.MONGO_URL)
-//   .then(() => {
-//     console.log("Database is connected successful");
-//   })
-//   .catch((error) => {
-//     console.log(error.message);
-//   });
-const mongooseUrl = process.env.MONGO_URL
-mongoose.connect(mongooseUrl).then(()=>{
-  console.log("DB Connected")
-}).catch((err)=>{
-  console.log(err.message)
-})
+const mongooseUrl = process.env.MONGO_URL;
+mongoose
+  .connect(mongooseUrl)
+  .then(() => {
+    console.log("Database is connected successful");
+  })
+  .catch((err) => {
+    console.log(err.message);
+  });
 app.use(cors());
 app.use(cookieparser());
 app.use(express.json());
